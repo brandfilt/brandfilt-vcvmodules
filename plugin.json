@@ -1,0 +1,26 @@
+{
+  "slug": "brandfilt",
+  "name": "brandfilt",
+  "version": "1.0.0",
+  "license": "MIT",
+  "brand": "brandfilt",
+  "author": "Juhana Jauhiainen",
+  "authorEmail": "juhana.jauhiainen@gmail.com",
+  "authorUrl": "https://github.com/brandfilt",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "modules": [
+    {
+      "slug": "ClockDivider",
+      "name": "ClockDivider",
+      "description": "",
+      "tags": [
+        "clock",
+        "divider",
+        "clock divider"
+      ]
+    }
+  ]
+}
