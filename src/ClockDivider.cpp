@@ -42,10 +42,14 @@ struct ClockDivider : Module {
     if (m_counter % 16 == 0)
       m_div16.trigger(1e-3);
 
-    outputs[DIV2_OUTPUT].setVoltage(m_div2.process(args.sampleTime) ? 10.f : 0.f);
-    outputs[DIV4_OUTPUT].setVoltage(m_div4.process(args.sampleTime) ? 10.f : 0.f);
-    outputs[DIV8_OUTPUT].setVoltage(m_div8.process(args.sampleTime) ? 10.f : 0.f);
-    outputs[DIV16_OUTPUT].setVoltage(m_div16.process(args.sampleTime) ? 10.f : 0.f);
+    outputs[DIV2_OUTPUT].setVoltage(m_div2.process(args.sampleTime) ? 10.f
+                                                                    : 0.f);
+    outputs[DIV4_OUTPUT].setVoltage(m_div4.process(args.sampleTime) ? 10.f
+                                                                    : 0.f);
+    outputs[DIV8_OUTPUT].setVoltage(m_div8.process(args.sampleTime) ? 10.f
+                                                                    : 0.f);
+    outputs[DIV16_OUTPUT].setVoltage(m_div16.process(args.sampleTime) ? 10.f
+                                                                      : 0.f);
   }
 };
 
@@ -63,13 +67,20 @@ struct ClockDividerWidget : ModuleWidget {
     addChild(createWidget<ScrewSilver>(Vec(
         box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
+    addInput(createInputCentered<PJ301MPort>(Vec(22.50, 80.00), module,
+                                             ClockDivider::CLOCK_INPUT));
 
-    addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.00, 20.00)), module, ClockDivider::CLOCK_INPUT));
+    addOutput(createOutputCentered<PJ301MPort>(Vec(22.50, 150.00), module,
+                                               ClockDivider::DIV2_OUTPUT));
 
-    addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.00, 40.00)), module, ClockDivider::DIV2_OUTPUT));
-    addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 60.800)), module, ClockDivider::DIV4_OUTPUT));
-    addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 80.800)), module, ClockDivider::DIV8_OUTPUT));
-    addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 100.800)), module, ClockDivider::DIV16_OUTPUT));
+    addOutput(createOutputCentered<PJ301MPort>(Vec(22.50, 200.00), module,
+                                               ClockDivider::DIV4_OUTPUT));
+
+    addOutput(createOutputCentered<PJ301MPort>(Vec(22.50, 250.00), module,
+                                               ClockDivider::DIV8_OUTPUT));
+
+    addOutput(createOutputCentered<PJ301MPort>(Vec(22.50, 300.00), module,
+                                               ClockDivider::DIV16_OUTPUT));
   }
 };
 
