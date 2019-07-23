@@ -42,14 +42,17 @@ struct ClockDivider : Module {
     if (m_counter % 16 == 0)
       m_div16.trigger(1e-3);
 
-    outputs[DIV2_OUTPUT].setVoltage(m_div2.process(args.sampleTime) ? 10.f
-                                                                    : 0.f);
-    outputs[DIV4_OUTPUT].setVoltage(m_div4.process(args.sampleTime) ? 10.f
-                                                                    : 0.f);
-    outputs[DIV8_OUTPUT].setVoltage(m_div8.process(args.sampleTime) ? 10.f
-                                                                    : 0.f);
-    outputs[DIV16_OUTPUT].setVoltage(m_div16.process(args.sampleTime) ? 10.f
-                                                                      : 0.f);
+    float div2_out = m_div2.process(args.sampleTime) ? 10.f : 0.f;
+    outputs[DIV2_OUTPUT].setVoltage(div2_out);
+
+    float div4_out = m_div4.process(args.sampleTime) ? 10.f : 0.f;
+    outputs[DIV4_OUTPUT].setVoltage(div4_out);
+
+    float div8_out = m_div8.process(args.sampleTime) ? 10.f : 0.f;
+    outputs[DIV8_OUTPUT].setVoltage(div8_out);
+
+    float div16_out = m_div16.process(args.sampleTime) ? 10.f : 0.f;
+    outputs[DIV16_OUTPUT].setVoltage(div16_out);
   }
 };
 
